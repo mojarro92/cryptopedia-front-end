@@ -5,7 +5,17 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/CryptopediaLogo.png';
 
 const Navbar = () => {
+    const [coinsData, setCoinsData] = useState([]);
     const [btcPrice, setBtcPrice] = useState();
+
+    useEffect(() => {
+        axios.get(`http://rest-sandbox.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;XRP;BCH&apikey=${process.env.REACT_APP_API_KEY}`)
+            .then(res => {
+                setCoinsData(res.data);
+            })
+            .catch(err => console.log(err))
+
+    }, []);
 
     useEffect(() => {
         axios.get(`http://rest-sandbox.coinapi.io/v1/exchangerate/BTC/USD?apikey=${process.env.REACT_APP_API_KEY}`)
@@ -33,6 +43,13 @@ const Navbar = () => {
                     <button className='btn btn-primary'><Link className="text-white" to={'/createacc'}>Create Account</Link></button>
                 </li>
             </ul>
+            <div className='bg-secondary container-fluid pl-5 pr-0'>
+                <div className='d-flex flex-row justify-content-around'>
+                    {coinsData && coinsData.map((coin) => {
+                        return <p className='col text-white m-0 p-0'>{coin.name}: ${Number.parseFloat(coin.price_usd).toFixed(2)}</p>
+                    })}
+                </div>
+            </div>
         </div>
     )
 };

@@ -10,19 +10,8 @@ import { render } from '@testing-library/react';
 
 const Dashboard = () => {
 
-    const [coinsData, setCoinsData] = useState([]);
     const [btcHist, setBtcHist] = useState([]);
     const [userData, setUserData] = useState([]);
-
-
-    useEffect(() => {
-        axios.get(`http://rest-sandbox.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;XRP;BCH&apikey=${process.env.REACT_APP_API_KEY}`)
-            .then(res => {
-                setCoinsData(res.data);
-            })
-            .catch(err => console.log(err))
-
-    }, []);
 
     useEffect(() => {
         axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily`)
@@ -41,17 +30,8 @@ const Dashboard = () => {
     //         .catch(err => console.log(err))
 
     // }, []);
-
-
     return (
         <>
-            <div className='bg-secondary container-fluid pl-5 pr-0'>
-                <div className='d-flex flex-row justify-content-around'>
-                    {coinsData && coinsData.map((coin) => {
-                        return <p className='col text-white m-0 p-0'>{coin.name}: ${Number.parseFloat(coin.price_usd).toFixed(2)}</p>
-                    })}
-                </div>
-            </div>
             <div className='container-fluid background-image2'>
                 <div className='row'>
                     <div className='col'>
@@ -66,7 +46,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className='col'>
-                        <h3 className='text-center'>Price Charts</h3>
+                        <h3 className='text-center'>Crypto Index 30 Days</h3>
                         <LineChart data={btcHist.map((price, index) => ({ name: index, "uv": price[1] }))} width={300} height={300} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                             <Line type="monotone" dataKey="uv" stroke="#8884d8" />
                             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
