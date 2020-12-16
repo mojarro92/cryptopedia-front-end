@@ -13,7 +13,7 @@ const Dashboard = () => {
     const [coinsData, setCoinsData] = useState([]);
     const [btcHist, setBtcHist] = useState([]);
     const [userData, setUserData] = useState([]);
-    console.log(btcHist);
+
 
     useEffect(() => {
         axios.get(`http://rest-sandbox.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;XRP;BCH&apikey=${process.env.REACT_APP_API_KEY}`)
@@ -25,9 +25,9 @@ const Dashboard = () => {
     }, []);
 
     useEffect(() => {
-        axios.get(`http://rest-sandbox.coinapi.io/v1/trades/GEMINI_SPOT_BTC_USD/history?time_start=2020-12-16&limit=10&include_id=false&apikey=${process.env.REACT_APP_API_KEY}`)
+        axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily`)
             .then(res => {
-                setBtcHist(res.data);
+                setBtcHist(res.data.prices);
             })
             .catch(err => console.log(err))
 
@@ -41,6 +41,7 @@ const Dashboard = () => {
     //         .catch(err => console.log(err))
 
     // }, []);
+
 
     return (
         <>
@@ -66,10 +67,10 @@ const Dashboard = () => {
                     </div>
                     <div className='col'>
                         <h3 className='text-center'>Price Charts</h3>
-                        <LineChart data={btcHist} width={300} height={300} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                            <Line type="monotone" dataKey="price" stroke="#8884d8" />
+                        <LineChart data={btcHist.map((price, index) => ({ name: index, "uv": price[1] }))} width={300} height={300} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                            <Line type="monotone" dataKey="uv" stroke="#8884d8" />
                             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                            <XAxis dataKey="time_exchange" />
+                            <XAxis />
                             <YAxis />
                             <Tooltip />
                         </LineChart>
@@ -85,3 +86,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
