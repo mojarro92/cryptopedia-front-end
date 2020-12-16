@@ -8,7 +8,7 @@ const Navbar = () => {
     const [btcPrice, setBtcPrice] = useState();
 
     useEffect(() => {
-        axios.get(`http://rest-sandbox.coinapi.io/v1/exchangerate/BTC/USD?apikey=${process.env.API_KEY}`)
+        axios.get(`http://rest-sandbox.coinapi.io/v1/exchangerate/BTC/USD?apikey=${process.env.REACT_APP_API_KEY}`)
             .then(res => {
                 setBtcPrice(Math.floor(res.data.rate));
             })

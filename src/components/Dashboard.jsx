@@ -16,7 +16,7 @@ const Dashboard = () => {
     console.log(btcHist);
 
     useEffect(() => {
-        axios.get(`http://rest-sandbox.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;XRP;BCH&apikey=${process.env.API_KEY}`)
+        axios.get(`http://rest-sandbox.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;XRP;BCH&apikey=${process.env.REACT_APP_API_KEY}`)
             .then(res => {
                 setCoinsData(res.data);
             })
@@ -25,7 +25,7 @@ const Dashboard = () => {
     }, []);
 
     useEffect(() => {
-        axios.get(`http://rest-sandbox.coinapi.io/v1/trades/GEMINI_SPOT_BTC_USD/history?time_start=2020-12-16&limit=10&include_id=false&apikey=${process.env.API_KEY}`)
+        axios.get(`http://rest-sandbox.coinapi.io/v1/trades/GEMINI_SPOT_BTC_USD/history?time_start=2020-12-16&limit=10&include_id=false&apikey=${process.env.REACT_APP_API_KEY}`)
             .then(res => {
                 setBtcHist(res.data);
             })
@@ -67,9 +67,9 @@ const Dashboard = () => {
                     <div className='col'>
                         <h3 className='text-center'>Price Charts</h3>
                         <LineChart data={btcHist} width={300} height={300} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                            <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+                            <Line type="monotone" dataKey="price" stroke="#8884d8" />
                             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                            <XAxis dataKey="name" />
+                            <XAxis dataKey="time_exchange" />
                             <YAxis />
                             <Tooltip />
                         </LineChart>
