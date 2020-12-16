@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/CryptopediaLogo.png';
 
 const Navbar = () => {
-    const API_KEY = 'B53D3D81-5BCC-4278-AD71-97E0C7D32B9D';
     const [btcPrice, setBtcPrice] = useState();
 
     useEffect(() => {
-        axios.get(`http://rest-sandbox.coinapi.io/v1/exchangerate/BTC/USD?apikey=${API_KEY}`)
+        axios.get(`http://rest-sandbox.coinapi.io/v1/exchangerate/BTC/USD?apikey=${process.env.API_KEY}`)
             .then(res => {
                 setBtcPrice(Math.floor(res.data.rate));
             })
