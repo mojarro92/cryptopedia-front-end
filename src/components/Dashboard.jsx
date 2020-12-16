@@ -7,6 +7,7 @@ import './styles/dashboard.css'
 import { render } from '@testing-library/react';
 
 
+
 const Dashboard = () => {
 
     const [coinsData, setCoinsData] = useState([]);
