@@ -8,7 +8,7 @@ import ChartIcon from '../assets/chart-icon.png';
 const Home = () => {
     return (
         <div>
-            <div className='background-image mb-4 d-flex flex-column align-items-center justify-content-center'>
+            <div className='background-image mb-3 d-flex flex-column align-items-center justify-content-center'>
                 <div className='d-flex flex-column align-items-center justify-content-center pt-5 mt-5'>
                     <h1>WELCOME TO CRYPTOPEDIA</h1>
                     <h2>Trade crypto, without the risk</h2>
