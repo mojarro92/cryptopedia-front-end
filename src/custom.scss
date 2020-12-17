@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 $theme-colors: (
   'primary': #11c95e,
   'secondary': #3182c4,
@@ -10,5 +12,10 @@ $theme-colors: (
 );
 $body-bg: transparent;
 $body-color: #323C53;
+
+$font-family-sans-serif: 'Rubik', sans-serif;
+// $font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
+// $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+// $font-family-base:       $font-family-sans-serif !default;
 
 @import '~bootstrap/scss/bootstrap.scss';
