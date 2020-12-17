@@ -31,7 +31,7 @@ const Login = (props) => {
         <div>
             <form className="form-horizontal">
                 <div className="form-group pt-3">
-                    <label for="email">Username:</label>
+                    <label className='control-label col-sm-2' for="email">Username:</label>
                     <div className="col-sm-10">
                         <input onChange={handleChange} type="email" className="form-control" name="username" placeholder="Enter email" />
                     </div>
