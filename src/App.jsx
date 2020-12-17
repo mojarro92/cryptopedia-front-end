@@ -6,7 +6,7 @@ import Createacc from './components/Createacc';
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 
-import { Link, Route, Switch } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 
 function App() {
   return (

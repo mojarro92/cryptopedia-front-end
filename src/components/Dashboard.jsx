@@ -1,10 +1,10 @@
-import React, { useState, useEffect, PureComponent } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip
 } from 'recharts';
 import axios from 'axios';
 import './styles/dashboard.css'
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 
 
 
@@ -13,7 +13,7 @@ const Dashboard = () => {
     const [btcHist, setBtcHist] = useState([]);
     const [coinPrices, setCoinPrices] = useState([]);
     console.log(coinPrices);
-    const [userData, setUserData] = useState([]);
+    // const [userData, setUserData] = useState([]);
     useEffect(() => {
         axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily`)
             .then(res => {
