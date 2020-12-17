@@ -20,12 +20,16 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='d-flex m-5 p-5 justify-content-center'>
-                    <img src={CoinStack} className='img-fluid img-thumbnail' alt='Coin Stack' />
+                    <div className='d-flex align-items-center container-fluid'>
+                        <img src={CoinStack} className='coinStack' alt='Coin Stack' />
+                    </div>
                     <div className='col-5'>
                         <h5>Compete, Risk Free with $100,000 in Virtual Cash</h5>
                         <p>Start with $100,000 in virtual cash and put your trading skills to the test. Compete with thousands of other traders and trade your way to the top!</p>
                     </div>
-                    <img src={ChartIcon} className='img-fluid img-thumbnail' alt='Chart Icon' />
+                    <div className='d-flex align-items-center container-fluid'>
+                        <img src={ChartIcon} className='chartIcon' alt='Chart Icon' />
+                    </div>
                     <div className="col-5">
                         <h4>A Stepping Stone to the Real Markets</h4>
                         <p>The ideal platform to get your crypto feet wet! Submit trades in a virtual environment before you start risking your own capital.</p>
