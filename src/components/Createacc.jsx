@@ -24,7 +24,7 @@ const Createacc = () => {
     return (
         <div>
             <form className="form-horizontal">
-                <div className="form-group">
+                <div className="form-group pt-5 mt-5">
                     <label className="control-label col-sm-2" for="email">Email:</label>
                     <div className="col-sm-10">
                         <input onChange={handleChange} type="email" className="form-control" name="username" placeholder="Enter email" />
@@ -37,7 +37,7 @@ const Createacc = () => {
                     </div>
                 </div>
                 <div className="form-group">
-                    <div className="col-sm-offset-2 col-sm-10 pl-5">
+                    <div className="col-sm-offset-2 col-sm-10 pl-5 pb-5 mb-5">
                         <button className="btn btn-primary" onClick={submit} type="submit" >Create</button>
                     </div>
                 </div>

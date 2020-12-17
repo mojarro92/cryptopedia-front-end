@@ -30,7 +30,7 @@ const Login = (props) => {
     return (
         <div>
             <form className="form-horizontal">
-                <div className="form-group pt-3">
+                <div className="form-group pt-5 mt-5">
                     <label className='control-label col-sm-2' for="email">Username:</label>
                     <div className="col-sm-10">
                         <input onChange={handleChange} type="email" className="form-control" name="username" placeholder="Enter email" />
@@ -43,7 +43,7 @@ const Login = (props) => {
                     </div>
                 </div>
                 <div className="form-group p-auto">
-                    <div className="col-sm-offset-2 col-sm-10 pl-5">
+                    <div className="col-sm-offset-2 col-sm-10 pl-5 pb-5 mb-5">
                         <button onClick={logIn} type="submit" className="btn btn-primary">Login</button>
                     </div>
                 </div>
