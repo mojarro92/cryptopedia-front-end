@@ -11,7 +11,7 @@ const Home = () => {
             <div className='background-image mb-3 d-flex flex-column align-items-center justify-content-center'>
                 <div className='d-flex flex-column align-items-center justify-content-center pt-5 mt-5'>
                     <h1>WELCOME TO CRYPTOPEDIA</h1>
-                    <h2>Trade crypto, without the risk</h2>
+                    <h2>Trade crypto, without the rnpm sisk</h2>
                     <p>Practice trading BTC and other popular cryptocurrencies all in one place. </p>
                     <h6>Think you got what it takes to be the next bitcoin billionaire?</h6>
 
