@@ -34,9 +34,6 @@ const Navbar = () => {
                     </a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-dark" href="#!">BTC ${btcPrice}</a>
-                </li>
-                <li className="nav-item">
                     <button className='btn btn-secondary'><Link className="text-white" to={'/createacc'}>Log In</Link></button>
                 </li>
                 <li className="nav-item">

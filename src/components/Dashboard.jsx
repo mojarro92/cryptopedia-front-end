@@ -45,7 +45,7 @@ const Dashboard = () => {
             <div className='container-fluid background-image2'>
                 <div className='row'>
                     <div className='col'>
-                        <h3 className='text-center'>Current Holdings</h3>
+                        <h3 className='text-center'>Market</h3>
                         <div className='bg-white'>
                             <h6 className='text-dark'>Market Information:</h6>
                             {Object.keys(coinPrices).map(key => {
