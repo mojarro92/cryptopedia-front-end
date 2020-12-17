@@ -34,7 +34,7 @@ const Navbar = () => {
                     </a>
                 </li>
                 <li className="nav-item">
-                    <button className='btn btn-secondary'><Link className="text-white" to={'/createacc'}>Log In</Link></button>
+                    <button className='btn btn-secondary'><Link className="text-white" to={'/login'}>Log In</Link></button>
                 </li>
                 <li className="nav-item">
                     <button className='btn btn-primary'><Link className="text-white" to={'/createacc'}>Create Account</Link></button>
