@@ -7,27 +7,26 @@ import './styles/dashboard.css'
 import { render } from '@testing-library/react';
 
 
+
 const Dashboard = () => {
 
-    const API_KEY = 'B53D3D81-5BCC-4278-AD71-97E0C7D32B9D';
-    const [coinsData, setCoinsData] = useState([]);
     const [btcHist, setBtcHist] = useState([]);
+    const [coinPrices, setCoinPrices] = useState([]);
+    console.log(coinPrices);
     const [userData, setUserData] = useState([]);
-    console.log(btcHist);
-
     useEffect(() => {
-        axios.get(`http://rest-sandbox.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;XRP;BCH&apikey=${API_KEY}`)
+        axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily`)
             .then(res => {
-                setCoinsData(res.data);
+                setBtcHist(res.data.prices);
             })
             .catch(err => console.log(err))
 
     }, []);
 
     useEffect(() => {
-        axios.get(`http://rest-sandbox.coinapi.io/v1/trades/GEMINI_SPOT_BTC_USD/history?time_start=2020-12-16&limit=10&include_id=false&apikey=${API_KEY}`)
+        axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Cripple%2Ctether%2Clitecoin%2Cbitcoin-cash%2Cchainlink%2Ccardano%2Cpolkadot%2Cbinance-coin%2Cstellar&vs_currencies=usd&include_24hr_change=true`)
             .then(res => {
-                setBtcHist(res.data);
+                setCoinPrices(res.data);
             })
             .catch(err => console.log(err))
 
@@ -41,35 +40,26 @@ const Dashboard = () => {
     //         .catch(err => console.log(err))
 
     // }, []);
-
     return (
         <>
-            <div className='bg-secondary container-fluid pl-5 pr-0'>
-                <div className='d-flex flex-row justify-content-around'>
-                    {coinsData && coinsData.map((coin) => {
-                        return <p className='col text-white m-0 p-0'>{coin.name}: ${Number.parseFloat(coin.price_usd).toFixed(2)}</p>
-                    })}
-                </div>
-            </div>
             <div className='container-fluid background-image2'>
                 <div className='row'>
                     <div className='col'>
-                        <h3 className='text-center'>Current Holdings</h3>
+                        <h3 className='text-center'>Market</h3>
                         <div className='bg-white'>
-                            <h6 className='text-dark'>Wallet:</h6>
-                            <p>USD:</p>
-                            <p>BTC:</p>
-                            <p>XRP:</p>
-                            <p>ETH:</p>
-                            <p>LTC:</p>
+                            <h6 className='text-dark'>Market Information:</h6>
+                            {Object.keys(coinPrices).map(key => {
+                                return <p>{`${key}: $${Number.parseFloat(coinPrices[key].usd).toFixed(2)} ---- ${Number.parseFloat(coinPrices[key].usd_24h_change).toFixed(2)}%`}</p>
+                            })}
+
                         </div>
                     </div>
                     <div className='col'>
-                        <h3 className='text-center'>Price Charts</h3>
-                        <LineChart width={300} height={300} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                        <h3 className='text-center'>Crypto Index 30 Days</h3>
+                        <LineChart data={btcHist.map((price, index) => ({ name: index, "uv": price[1] }))} width={300} height={300} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                             <Line type="monotone" dataKey="uv" stroke="#8884d8" />
                             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                            <XAxis dataKey="name" />
+                            <XAxis />
                             <YAxis />
                             <Tooltip />
                         </LineChart>
@@ -85,3 +75,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

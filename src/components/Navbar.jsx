@@ -5,11 +5,20 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/CryptopediaLogo.png';
 
 const Navbar = () => {
-    const API_KEY = 'B53D3D81-5BCC-4278-AD71-97E0C7D32B9D';
+    const [coinsData, setCoinsData] = useState([]);
     const [btcPrice, setBtcPrice] = useState();
 
     useEffect(() => {
-        axios.get(`http://rest-sandbox.coinapi.io/v1/exchangerate/BTC/USD?apikey=${API_KEY}`)
+        axios.get(`http://rest-sandbox.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;XRP;BCH&apikey=${process.env.REACT_APP_API_KEY}`)
+            .then(res => {
+                setCoinsData(res.data);
+            })
+            .catch(err => console.log(err))
+
+    }, []);
+
+    useEffect(() => {
+        axios.get(`http://rest-sandbox.coinapi.io/v1/exchangerate/BTC/USD?apikey=${process.env.REACT_APP_API_KEY}`)
             .then(res => {
                 setBtcPrice(Math.floor(res.data.rate));
             })
@@ -25,15 +34,19 @@ const Navbar = () => {
                     </a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-dark" href="#!">BTC ${btcPrice}</a>
-                </li>
-                <li className="nav-item">
                     <button className='btn btn-secondary'><Link className="text-white" to={'/createacc'}>Log In</Link></button>
                 </li>
                 <li className="nav-item">
                     <button className='btn btn-primary'><Link className="text-white" to={'/createacc'}>Create Account</Link></button>
                 </li>
             </ul>
+            <div className='bg-secondary container-fluid pl-5 pr-0'>
+                <div className='d-flex flex-row justify-content-around'>
+                    {coinsData && coinsData.map((coin) => {
+                        return <p className='col text-white m-0 p-0'>{coin.name}: ${Number.parseFloat(coin.price_usd).toFixed(2)}</p>
+                    })}
+                </div>
+            </div>
         </div>
     )
 };
