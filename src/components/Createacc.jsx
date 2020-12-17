@@ -16,7 +16,7 @@ const Createacc = () => {
 
     function submit(event) {
         event.preventDefault()
-        axios.post("http://localhost:5000/auth/signup", userInfo)
+        axios.post(`${process.env.REACT_APP_DB_URL}/auth/signup`, userInfo)
             .then(res => console.log(res, 'New user was created'))
             .catch(err => console.log(err, 'User failed to create'))
     }

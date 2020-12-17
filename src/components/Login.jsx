@@ -16,7 +16,7 @@ const Login = (props) => {
 
     function logIn(event) {
         event.preventDefault()
-        axios.post("http://localhost:5000/auth/login", userInfo)
+        axios.post(`${process.env.REACT_APP_DB_URL}/auth/login`, userInfo)
             .then(res => {
                 if (res.status === 200) {
                     props.history.push('/dashboard')
