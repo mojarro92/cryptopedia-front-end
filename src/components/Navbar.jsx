@@ -6,7 +6,6 @@ import logo from '../assets/CryptopediaLogo.png';
 
 const Navbar = () => {
     const [coinsData, setCoinsData] = useState([]);
-    // const [btcPrice, setBtcPrice] = useState();
 
     useEffect(() => {
         axios.get(`https://rest-sandbox.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;XRP;BCH&apikey=${process.env.REACT_APP_API_KEY}`)
@@ -16,14 +15,6 @@ const Navbar = () => {
             .catch(err => console.log(err))
 
     }, []);
-
-    // useEffect(() => {
-    //     axios.get(`http://rest-sandbox.coinapi.io/v1/exchangerate/BTC/USD?apikey=${process.env.REACT_APP_API_KEY}`)
-    //         .then(res => {
-    //             setBtcPrice(Math.floor(res.data.rate));
-    //         })
-    //         .catch(err => console.log(err))
-    // }, []);
 
     return (
         <div className='container-fluid pb-2'>
