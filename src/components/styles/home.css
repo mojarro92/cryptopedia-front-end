@@ -1,18 +1,9 @@
 .background-image {
   width: 90vw;
-  height: 100vh;
   mix-blend-mode: normal;
   box-shadow: 0px 9px 10px 10px rgba(0, 0, 0, 0.53);
  background: url('../../assets/coins-chart-wp.png');
   background-size: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
 }
-
-/* .coinStack {
-  width: 15vh;
-  height: 15vh;
-}
-
-.chartIcon {
-  width: 15vh;
-  height: 15vh;
-} */
