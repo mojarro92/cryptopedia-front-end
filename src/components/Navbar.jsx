@@ -8,7 +8,7 @@ const Navbar = () => {
     const [coinsData, setCoinsData] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://rest-sandbox.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;DOGE;BCH&apikey=${process.env.REACT_APP_API_KEY}`)
+        axios.get(`https://rest-sandbox.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;BCH&apikey=${process.env.REACT_APP_API_KEY}`)
             .then(res => {
                 setCoinsData(res.data);
             })
