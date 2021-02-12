@@ -32,7 +32,7 @@ const Navbar = () => {
                 </li>
             </ul>
             <div className='bg-secondary container-fluid pl-5 pr-0'>
-                <div className='d-flex flex-row justify-content-around'>
+                <div className='d-flex flex-row justify-content-evenly'>
                     {coinsData && coinsData.map((coin) => {
                         return <p className='col text-white m-0 p-0'>{coin.name}: ${Number.parseFloat(coin.price_usd).toFixed(2)}</p>
                     })}
