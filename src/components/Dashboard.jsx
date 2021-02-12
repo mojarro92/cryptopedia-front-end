@@ -65,7 +65,10 @@ const Dashboard = () => {
                         </LineChart>
                     </div>
                     <div className='col'>
-                        <h3 className='text-center'>Trade History</h3>
+                        <h3>Trading History</h3>
+                        <div>
+
+                        </div>
                     </div>
 
                 </div>
