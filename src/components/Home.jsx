@@ -1,4 +1,3 @@
-import './styles/home.css'
 import '../index'
 import React from 'react';
 import { Link } from 'react-router-dom';

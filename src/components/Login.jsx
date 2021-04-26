@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// useHistory
+
 const Login = (props) => {
     const [userInfo, setUserInfo] = useState({
         username: "",

@@ -3,17 +3,11 @@ import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip
 } from 'recharts';
 import axios from 'axios';
-import './styles/dashboard.css'
-// import { render } from '@testing-library/react';
-
-
 
 const Dashboard = () => {
 
     const [btcHist, setBtcHist] = useState([]);
     const [coinPrices, setCoinPrices] = useState([]);
-    console.log(coinPrices);
-    // const [userData, setUserData] = useState([]);
     useEffect(() => {
         axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily`)
             .then(res => {
@@ -32,14 +26,6 @@ const Dashboard = () => {
 
     }, []);
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:3000/user`)
-    //         .then(res => {
-    //             setUser(res.data);
-    //         })
-    //         .catch(err => console.log(err))
-
-    // }, []);
     return (
         <>
             <div className='container-fluid background-image2 mb-3 d-flex flex-column pt-3'>

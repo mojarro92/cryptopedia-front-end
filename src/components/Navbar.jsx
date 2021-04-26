@@ -1,19 +1,18 @@
-import './styles/navbar.css'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logo from '../assets/CryptopediaLogo.png';
 
+
 const Navbar = () => {
     const [coinsData, setCoinsData] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://rest-sandbox.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;BCH&apikey=${process.env.REACT_APP_API_KEY}`)
+        axios.get(`https://rest.coinapi.io/v1/assets?filter_asset_id=BTC;ETH;LTC;BCH&apikey=${process.env.REACT_APP_COIN_API_KEY}`)
             .then(res => {
                 setCoinsData(res.data);
             })
-            .catch(err => console.log(err))
-
+            .catch(err => console.log(err));
     }, []);
 
     return (
