@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = (props) => {
+function Login({ setToken, history }) {
+
     const [userInfo, setUserInfo] = useState({
-        username: "",
+        email: "",
         password: ""
     })
 
@@ -14,12 +15,12 @@ const Login = (props) => {
         });
     }
 
-    function logIn(event) {
-        event.preventDefault()
-        axios.post(`${process.env.REACT_APP_DB_URL}/auth/login`, userInfo)
+    function logIn(e) {
+        e.preventDefault()
+        axios.post(`http://localhost:3000/reg-log/login`, userInfo)
             .then(res => {
                 if (res.status === 200) {
-                    props.history.push('/dashboard')
+                    setToken(res)
                 } else {
                     console.log('Failed to log in');
                 }
@@ -31,15 +32,17 @@ const Login = (props) => {
         <div>
             <form className="form-horizontal">
                 <div className="form-group pt-5 mt-5">
-                    <label className='control-label col-sm-2' for="email">Username:</label>
+                    <label className='control-label col-sm-2'>Email:</label>
                     <div className="col-sm-10">
-                        <input onChange={handleChange} type="email" className="form-control" name="username" placeholder="Enter email" />
+                        <input onChange={handleChange} type="email" className="form-control"
+                            name="email" placeholder="Enter email" />
                     </div>
                 </div>
                 <div className="form-group">
-                    <label className="control-label col-sm-2" for="pwd">Password:</label>
+                    <label className="control-label col-sm-2">Password:</label>
                     <div className="col-sm-10">
-                        <input onChange={handleChange} type="password" className="form-control" name="password" placeholder="Enter password" />
+                        <input onChange={handleChange} type="password" className="form-control"
+                            name="password" placeholder="Enter password" />
                     </div>
                 </div>
                 <div className="form-group p-auto">

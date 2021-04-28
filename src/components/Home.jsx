@@ -6,7 +6,7 @@ import ChartIcon from '../assets/chart-icon.png';
 
 const Home = () => {
     return (
-        <div>
+        <div className="row justify-content-center">
             <div className='background-image mb-3 d-flex flex-column justify-content-center align-items-center'>
                 <div className='d-flex flex-column align-items-center justify-content-center pt-5 mt-5'>
                     <h1>WELCOME TO CRYPTOPEDIA</h1>
@@ -35,11 +35,7 @@ const Home = () => {
                             <p>The ideal platform to get your crypto feet wet! Submit trades in a virtual environment before you start risking your own capital.</p>
                         </div>
                     </div>
-
                 </div>
-            </div>
-            <div>
-
             </div>
         </div>
     );
