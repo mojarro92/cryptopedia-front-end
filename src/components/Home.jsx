@@ -1,5 +1,3 @@
-import '../index'
-import React from 'react';
 import { Link } from 'react-router-dom';
 import CoinStack from '../assets/coin-stack.png';
 import ChartIcon from '../assets/chart-icon.png';

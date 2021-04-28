@@ -1,14 +1,14 @@
 import './App.scss';
-import Nav from './components/Nav'
+import { Switch } from "react-router-dom"
 import Home from './components/Home'
-import Footer from './components/Footer'
+import Nav from './components/Nav'
+import CryptoIdx from './components/CryptoIdx'
+import Dashboard from './components/Dashboard'
 import Createacc from './components/Createacc';
 import Login from './components/Login'
-import Dashboard from './components/Dashboard'
-import CryptoIdx from './components/CryptoIdx'
-import ProtectedRoute from './components/ProtectedRoute'
-import { Route, Switch } from "react-router-dom"
+import Footer from './components/Footer'
 import useToken from './components/Hook/useToken'
+import RouterController from './components/routes/RouteController'
 
 function App() {
 
@@ -19,10 +19,34 @@ function App() {
       <Nav />
       <CryptoIdx />
       <Switch>
-        <Route exact path='/' render={(props) => <Home {...props} />} />
-        <Route path='/createacc' render={(props) => <Createacc {...props} />} />
-        <Route path='/login' render={(props) => <Login {...props} setToken={setToken} />} />
-        <ProtectedRoute Component={Dashboard} token={token} />
+        <RouterController
+          routeType={'public'}
+          component={Home}
+          path={'/'}
+          exact
+        />
+        <RouterController
+          routeType={'auth'}
+          token={token}
+          component={Createacc}
+          path={'/createacc'}
+          exact
+        />
+        <RouterController
+          routeType={'auth'}
+          token={token}
+          component={Login}
+          setToken={setToken}
+          path={'/login'}
+          exact
+        />
+        <RouterController
+          routeType={'protected'}
+          token={token}
+          component={Dashboard}
+          path={'/dashboard'}
+          exact
+        />
       </Switch>
       <Footer />
 

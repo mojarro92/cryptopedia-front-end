@@ -1,7 +1,4 @@
-import React from 'react';
-
 const Dashboard = () => {
-
     return (
         <>
             <div className='container-fluid background-image2 mb-3 d-flex flex-column pt-3'>

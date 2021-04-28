@@ -20,7 +20,8 @@ function Login({ setToken, history }) {
         axios.post(`http://localhost:3000/reg-log/login`, userInfo)
             .then(res => {
                 if (res.status === 200) {
-                    setToken(res)
+                    setToken(res.data)
+                    return history.push('/dashboard')
                 } else {
                     console.log('Failed to log in');
                 }

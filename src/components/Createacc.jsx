@@ -26,13 +26,13 @@ const Createacc = () => {
             <form className="form-horizontal">
                 <div className="form-group pt-5 mt-5">
                     <label className="control-label col-sm-2" for="email">Email:</label>
-                    <div className="col-sm-10">
+                    <div className="col-4">
                         <input onChange={handleChange} type="email" className="form-control" name="username" placeholder="Enter email" />
                     </div>
                 </div>
                 <div className="form-group">
                     <label className="control-label col-sm-2" for="pwd">Password:</label>
-                    <div className="col-sm-10">
+                    <div className="col-4">
                         <input onChange={handleChange} type="password" className="form-control" name="password" placeholder="Enter password" />
                     </div>
                 </div>
