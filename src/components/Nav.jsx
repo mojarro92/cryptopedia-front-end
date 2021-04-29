@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import logo from '../assets/CryptopediaLogo.png';
 import { Navbar, Button } from 'react-bootstrap'
 
@@ -8,23 +7,24 @@ const Navigation = ({ token, setToken }) => {
     function logout() {
         sessionStorage.removeItem('token')
         setToken(null)
+        return window.location.href = '/'
     }
 
     const isAuth = token
         ? <>
-            <Button className='mr-5' variant='primary'>
-                <Link className='text-white' to='/dashboard'>Dashboard</Link>
+            <Button href='/dashboard' className='mr-5' variant='primary'>
+                Dashboard
             </Button>
-            <Button variant='danger'>
-                <Link onClick={logout} className='text-white' to={'/'}>Sign Out</Link>
+            <Button onClick={logout} variant='danger'>
+                Sign Out
             </Button>
         </>
         : <>
-            <Button className='mr-3' variant='secondary'>
-                <Link className="text-white" to={'/login'}>Log In</Link>
+            <Button href='/login' className='mr-3' variant='secondary'>
+                Log In
             </Button>
-            <Button variant='primary'>
-                <Link className="text-white" to={'/createacc'}>Create Account</Link>
+            <Button href='/createacc' variant='primary'>
+                Create Account
             </Button>
         </>
 

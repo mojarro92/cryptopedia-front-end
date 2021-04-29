@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 function Login({ setToken }) {
 
@@ -30,29 +32,21 @@ function Login({ setToken }) {
     }
 
     return (
-        <div>
-            <form className="form-horizontal">
-                <div className="form-group pt-5 mt-5">
-                    <label className='control-label col-sm-2'>Email:</label>
-                    <div className="col-sm-10">
-                        <input onChange={handleChange} type="email" className="form-control"
-                            name="email" placeholder="Enter email" />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="control-label col-sm-2">Password:</label>
-                    <div className="col-sm-10">
-                        <input onChange={handleChange} type="password" className="form-control"
-                            name="password" placeholder="Enter password" />
-                    </div>
-                </div>
-                <div className="form-group p-auto">
-                    <div className="col-sm-offset-2 col-sm-10 pl-5 pb-5 mb-5">
-                        <button onClick={logIn} type="submit" className="btn btn-primary">Login</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+        <>
+            <Form className='container w-50 mb-4 d-flex flex-column justify-content-center'>
+                <h2>Login</h2>
+
+                <Form.Group controlId='formBasicEmail'>
+                    <Form.Label>Email account:</Form.Label>
+                    <Form.Control onChange={handleChange} type='email' name='email' placeholder='Username' />
+                </Form.Group>
+                <Form.Group controlId='formBasicPassword'>
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control onChange={handleChange} type='password' name='password' placeholder='Password' />
+                </Form.Group>
+                <Button onClick={logIn} variant='primary' type='submit'>Log In</Button>
+            </Form>
+        </>
     );
 };
 

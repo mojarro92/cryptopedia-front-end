@@ -27,8 +27,10 @@ const Createacc = () => {
 
     return (
         <>
-            <Form>
-                <Form.Row>
+
+            <Form className='container w-50 mb-4 d-flex flex-column justify-content-center'>
+                <h2>Create Account</h2>
+                <Form.Row className='justify-content-between m-0'>
                     <Form.Group controlId="formGridEmail">
                         <Form.Label>First Name:</Form.Label>
                         <Form.Control onChange={handleChange} type="text" name='firstName' placeholder="Enter first name" />
@@ -40,12 +42,13 @@ const Createacc = () => {
                     </Form.Group>
                 </Form.Row>
                 <Form.Group controlId='formBasicEmail'>
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label>Email address:</Form.Label>
                     <Form.Control onChange={handleChange} type='email' name='email' placeholder='Enter email' />
                 </Form.Group>
                 <Form.Group controlId='formBasicPassword'>
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>Password:</Form.Label>
                     <Form.Control onChange={handleChange} type='password' name='password' placeholder='Password' />
+                    <Form.Text>Passwords must be 6+ digits.</Form.Text>
                 </Form.Group>
                 <Button onClick={submit} variant='primary' type='submit'>Submit</Button>
             </Form>

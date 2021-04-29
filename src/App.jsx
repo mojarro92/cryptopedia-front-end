@@ -9,10 +9,12 @@ import Login from './components/Login'
 import Footer from './components/Footer'
 import useToken from './components/Hook/useToken'
 import RouterController from './components/routes/RouteController'
+import jwt_decode from 'jwt-decode'
 
 function App() {
 
   const { token, setToken } = useToken()
+  const userInfo = token ? jwt_decode(token) : ""
 
   return (
     <div className='App'>
@@ -43,6 +45,7 @@ function App() {
         <RouterController
           routeType={'protected'}
           token={token}
+          userInfo={userInfo.user}
           comp={Dashboard}
           path={'/dashboard'}
           exact
