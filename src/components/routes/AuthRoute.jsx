@@ -1,16 +1,14 @@
 import React from 'react'
-import { Redirect, Route } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 function AuthRoute(props) {
 
-    const compToRender = props.token
-        ? <Redirect to='/' />
-        : <props.component {...props} />
+    const { token, comp: Comp, ...routeProps } = props
 
     return (
-        <Route {...props}>
-            {compToRender}
-        </Route>
+        <>
+            {token ? <Redirect to='/' /> : <Comp{...routeProps} />}
+        </>
     )
 
 

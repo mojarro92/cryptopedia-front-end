@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function Login({ setToken, history }) {
+function Login({ setToken }) {
 
     const [userInfo, setUserInfo] = useState({
         email: "",
@@ -21,7 +21,7 @@ function Login({ setToken, history }) {
             .then(res => {
                 if (res.status === 200) {
                     setToken(res.data)
-                    return history.push('/dashboard')
+                    return window.location.href = '/dashboard'
                 } else {
                     console.log('Failed to log in');
                 }

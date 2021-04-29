@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Nav />
+      <Nav token={token} setToken={setToken} />
       <CryptoIdx />
       <Switch>
         <RouterController
@@ -28,14 +28,14 @@ function App() {
         <RouterController
           routeType={'auth'}
           token={token}
-          component={Createacc}
+          comp={Createacc}
           path={'/createacc'}
           exact
         />
         <RouterController
           routeType={'auth'}
           token={token}
-          component={Login}
+          comp={Login}
           setToken={setToken}
           path={'/login'}
           exact
@@ -43,7 +43,7 @@ function App() {
         <RouterController
           routeType={'protected'}
           token={token}
-          component={Dashboard}
+          comp={Dashboard}
           path={'/dashboard'}
           exact
         />

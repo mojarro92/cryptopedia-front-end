@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom'
 function ProtectedRoute(props) {
 
     const compToRender = props.token
-        ? <props.component {...props} />
+        ? <props.comp {...props} />
         : <Redirect to={'/login'} />
 
     return (

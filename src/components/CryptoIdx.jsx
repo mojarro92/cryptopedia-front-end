@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Navbar } from 'react-bootstrap'
 
 export default function CryptoIdx() {
     const [coinsData, setCoinsData] = useState([]);
@@ -13,12 +14,14 @@ export default function CryptoIdx() {
     }, []);
 
     return (
-        <div className='container-fluid bg-secondary mb-4'>
-            <div className='d-flex flex-row justify-content-evenly'>
-                {coinsData && coinsData.map((coin, idx) => {
-                    return <p key={idx} className='col text-white m-0 p-0'>{coin.name}: ${Number.parseFloat(coin.price_usd).toFixed(2)}</p>
-                })}
+        <Navbar sticky='top' className='d-block container-fluid p-0 bg-secondary mb-4 '>
+            <div className='d-flex'>
+                {coinsData?.map((coin, idx) => (
+                    <p key={idx}
+                        className='col small text-center text-white m-0'
+                    >{coin.name}: ${Number.parseFloat(coin.price_usd.toFixed(2)).toLocaleString('en')}</p>
+                ))}
             </div>
-        </div>
+        </Navbar>
     )
 }
