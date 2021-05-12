@@ -19,7 +19,7 @@ function Login({ setToken }) {
 
     function logIn(e) {
         e.preventDefault()
-        axios.post(`http://localhost:3000/reg-log/login`, userInfo)
+        axios.post(`${process.env.REACT_APP_DB_URL}/reg-log/login`, userInfo)
             .then(res => {
                 if (res.status === 200) {
                     setToken(res.data)
