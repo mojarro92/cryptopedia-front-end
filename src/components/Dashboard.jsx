@@ -1,8 +1,7 @@
+import React, { useEffect, useState, useMemo } from 'react';
 import axios from 'axios'
-import { useEffect, useState, useMemo } from 'react';
 import coinList from '../assets/top100cryptos'
 import Table from './Table'
-
 
 const Dashboard = ({ userInfo }) => {
 
@@ -13,30 +12,7 @@ const Dashboard = ({ userInfo }) => {
         axios.get(process.env.REACT_APP_GECKO_MARKET_INFO + query)
             .then(res => setallRawCryptos(res.data))
             .catch(err => console.log(err))
-    }, [])
-
-    function formatCryptoObj(cryptoApiObject) {
-        let rawObject = Object.keys(cryptoApiObject).map(k => {
-            let coinBalance = userInfo?.coins[k.toLowerCase()]
-                ? userInfo?.coins[k.toLowerCase()]
-                : 0;
-            return {
-                name: k.toUpperCase(),
-                price: Math.floor(allRawCryptos[k].usd * 1000) / 1000,
-                change: Math.floor(allRawCryptos[k].usd_24h_change * 100) / 100,
-                marketCap: Math.floor(allRawCryptos[k].usd_market_cap),
-                coinBalance: coinBalance
-            }
-        })
-        rawObject.sort((a, b) => {
-            if (a.marketCap > b.marketCap)
-                return -1
-            else {
-                return 1
-            }
-        })
-        return rawObject
-    }
+    }, [query])
 
     const columns = useMemo(() => [
         {
@@ -63,7 +39,28 @@ const Dashboard = ({ userInfo }) => {
 
     ], [])
 
-    const data = useMemo(() => formatCryptoObj(allRawCryptos), [allRawCryptos])
+    const data = useMemo(() => {
+        let rawObject = Object.keys(allRawCryptos).map(k => {
+            let coinBalance = userInfo?.coins[k.toLowerCase()]
+                ? userInfo?.coins[k.toLowerCase()]
+                : 0;
+            return {
+                name: k.toUpperCase(),
+                price: Math.floor(allRawCryptos[k].usd * 1000) / 1000,
+                change: Math.floor(allRawCryptos[k].usd_24h_change * 100) / 100,
+                marketCap: Math.floor(allRawCryptos[k].usd_market_cap),
+                coinBalance: coinBalance
+            }
+        })
+        rawObject.sort((a, b) => {
+            if (a.marketCap > b.marketCap)
+                return -1
+            else {
+                return 1
+            }
+        })
+        return rawObject
+    }, [allRawCryptos, userInfo?.coins])
 
     return (
         <>

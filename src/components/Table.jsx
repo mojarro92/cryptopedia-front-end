@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
 import RTable from 'react-bootstrap/Table'
-import { useTable, useSortBy, usePagination } from 'react-table';
+import { useTable, useSortBy } from 'react-table';
 
 function Table({ data, columns, updateMyData }) {
 

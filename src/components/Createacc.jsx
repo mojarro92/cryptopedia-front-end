@@ -21,7 +21,9 @@ const Createacc = () => {
     function submit(e) {
         e.preventDefault()
         axios.post(`${process.env.REACT_APP_DB_URL}/reg-log/create-account`, userInfo)
-            .then(res => console.log(res, 'New user was created'))
+            .then(res => {
+                return window.location.href = '/'
+            })
             .catch(err => console.log(err, 'User failed to create'))
     }
 
