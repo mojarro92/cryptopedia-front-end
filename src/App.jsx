@@ -4,7 +4,7 @@ import Home from './components/Home'
 import Nav from './components/Nav'
 import CryptoIdx from './components/CryptoIdx'
 import Dashboard from './components/Dashboard'
-import Createacc from './components/Createacc';
+import Createacc from './components/Createacc'
 import Login from './components/Login'
 import Footer from './components/Footer'
 import useToken from './components/Hook/useToken'
